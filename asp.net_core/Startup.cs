@@ -27,6 +27,8 @@ namespace MVC_Demo
 
             //注入数据库服务 第一步注入
             services.AddDbContext<McStoreContext>();
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         //处理HTTP管道 为程序注入中间件

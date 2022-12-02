@@ -115,31 +115,6 @@ namespace MVC_Demo.Controllers
             return View();
         }
 
-        /// 注册账号
-        [HttpPost]
-        public IActionResult RegisterAccount(RegisterAccountRequest request)
-        {
-            //判断用户名是否存在
-            var result = _db.Users.Any(x => x.UserName == request.UserName);
-            if (result)
-                return Content("账号已存在");
-
-            //添加数据
-            var data = new User
-            {
-                CraeteTime = DateTime.Now,
-                Password = request.Password,
-                /*Photo = String.Empty,*/
-                Photo = "img/xie.jpg",
-                UserName = request.UserName
-            };
-            _db.Users.Add(data);
-            var row = _db.SaveChanges();
-            if (row > 0)
-                return Content("注册成功");
-            return Content("注册失败");
-        }
-
         //登录账号
         [HttpPost]
         public IActionResult LoginAccount(LoginAccountRequest request)

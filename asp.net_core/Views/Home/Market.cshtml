@@ -1,0 +1,113 @@
+﻿@*引入命名空间*@
+@using MVC_Demo.Models.Database
+@*
+    注释：
+    cshtml:cs+html
+    可以在html文件里写C#代码
+    第一种方法@{代码} 在括号里写代码 多行
+    第二种方法@list 直接饮用变量 单行
+*@
+@{
+    //取控制器传过来的分类数据 并且强制转换类型
+    var categorys = ViewData["category"] as List<Category>;
+    var goods = ViewData["goods"] as List<Good>;
+    var cid = (int)ViewData["cid"];
+}
+<style>
+    .cur {
+        background-color: #69c0ff;
+        color: white !important;
+    }
+</style>
+<div class="container">
+    <!-- InstanceBeginEditable name="MainBody" -->
+    <link rel="stylesheet" type="text/css" href="css/household.css" />
+    <link rel="stylesheet" type="text/css" href="css/goods-item.css" />
+    <div class="phone-market">
+        <div class="banner">
+            <div class="xgs-row">
+                <img src="img/household/banner.png" width="100%" height="300">
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <div class="household-container  goods-item">
+        <div class="xgs-row" style="padding: 0;background-color: white;">
+            <ul class="household-navtab" style="display: inline-block;">
+                <li><a @(cid>0?"":"class=cur") href="/market.html">全部</a></li>
+                @{
+                    //完成分类数据查询和渲染
+
+                    //3.页面拿到数据进行显示
+                    //使用C#代码
+                    //遍历循环 分类数据
+                    foreach (var item in categorys)
+                    {
+                        //输出分类信息
+                        <li><a @(cid==item.Id?"class=cur":"") href="/market.html?cid=@item.Id">@item.CateName</a></li>
+                    }
+                }
+                @*
+                <li><a href="javascript:void(0);">文学</a></li>
+                <li><a href="javascript:void(0);">社科</a></li>
+                <li><a href="javascript:void(0);">经管</a></li>
+                <li><a href="javascript:void(0);">少儿</a></li>
+                <li><a href="javascript:void(0);">文教</a></li>
+                <li><a href="javascript:void(0);">科技</a></li>
+                <li><a href="javascript:void(0);">艺术</a></li>*@
+            </ul>
+        </div>
+
+        <div class="tab-item white-panel" style="padding: 20px 0;margin-top: 20px;">
+            <!-- 文学 -->
+            <div id="wenxue" class="wenxue">
+                @{
+                    int row;
+                    //商品的总数
+                    //行数：如果总数除以4能除尽  =商品的总数/4
+                    //     除不尽 商品的总数/4+1
+                    //除得尽的情况
+                    if (goods.Count % 4 == 0)
+                    {
+                        row = goods.Count / 4;
+                    }
+                    else
+                    {
+                        //整型除以整型 結果是一個整型
+                        //41/4 10.25 = 10
+                        row = goods.Count / 4 + 1;
+                    }
+
+                    for (var i = 1; i <= row; i++)
+                    {
+                        //1 1-4
+                        //2 5-8
+                        //3 9-12
+                        <div class="xgs-row">
+                            @{
+                                //这里不需要在连接数据库 执行SQL了
+                                var list = goods.Skip((i - 1) * 4).Take(4).ToList();
+                                foreach (var item in list)
+                                {
+                                    <div class="xgs-col4">
+                                        <a href="detail.html?id=@item.Id">
+                                            <div>
+                                                <img src="@item.Cover" alt="">
+                                                <span class="goods-title">
+                                                    @item.Name
+                                                </span>
+                                                <p class="price">￥@item.Price</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+
+
+                }
+            </div>
+        </div>
+        <!-- InstanceEndEditable -->
+    </div>

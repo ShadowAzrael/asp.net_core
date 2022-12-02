@@ -1,0 +1,94 @@
+.banner-bottom>div {
+	margin-right: 5px;
+	line-height: 80px;
+	text-align: center;
+	color: white;
+	margin-top: 8px;
+	vertical-align: middle;
+	background-color: #69C0FF;
+}
+
+.banner-bottom>div:last-child {
+	margin-right: 0;
+}
+
+.banner-bottom>div:hover {
+	background-color: #69c0ff;
+}
+
+/* .jpms>.xgs-row,
+.jrdp>.xgs-row,
+.jryh>.xgs-row {
+	background-color: white;
+	padding: 25px 0;
+}
+ */
+
+
+
+/* .jpms>.xgs-row>div {
+	height: 170px margin: auto;
+	position: relative;
+} */
+
+
+
+/* .jpms>.xgs-row img,
+.jrdp>.xgs-row img,
+.jryh>.xgs-row img {
+	width: 70%;
+	display: block;
+	vertical-align: middle;
+	margin: auto;
+} */
+
+
+
+.jpms .jpms-price {
+	/* width: 150px; */
+	width: 70%;
+	line-height: 28px;
+	left: 32px;
+	background-color: rgba(191, 191, 191, 0.7);
+	padding-left: 10px;
+	margin: -28px auto 0;
+	position: sticky;
+	color: #f5222d;
+	font-weight: 700;
+}
+
+.jrdp .price {
+	color: red;
+	width: 160px;
+	margin: auto;
+	font-weight: 700;
+	line-height: 36px;
+}
+
+.price-item {
+	width: 80%;
+	height: 100px;
+	margin: 10px auto;
+	line-height: 24px;
+	position: relative;
+}
+
+.price-item .promotion-tip {
+	background-color: rgba(203, 203, 203, 0.5);
+	color: rgb(183, 183, 183);
+	display: inline-block;
+	padding: 2px 4px;
+}
+
+.price-item .add-cart-btn {
+	padding: 5px 8px;
+	font-size: 16px;
+	border: #F5222D 1px solid;
+	background-color: #F5222D;
+	color: white;
+	position: absolute;
+	right: 0;
+	bottom: 1px;
+	cursor: pointer;
+}
+

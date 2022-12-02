@@ -1,0 +1,41 @@
+
+
+.tab-item {
+	padding: 20px 0;
+	display: block;
+}
+.household-navtab {
+	display: inline-block;
+	width: 100%;
+}
+
+
+.household-navtab li a {
+	float: left;
+	width: 14.28571428571429%;
+	text-align: center;
+	color: #8c8c8c;
+	cursor: pointer;
+	line-height: 47px;
+}
+.household-navtab li:hover{
+	
+}
+.goods-title {
+	margin: auto;
+	width: 160px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.household-container{
+	margin-top: 20px;
+}
+
+.household-container  img{
+	width: 70%;
+	margin: auto;
+	vertical-align: middle;
+	display: block;
+}

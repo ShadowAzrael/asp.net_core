@@ -1,0 +1,58 @@
+#attr>li {
+	display: inline-block;
+	padding: 8px 0px;
+	width: 100%;
+	line-height: 28px;
+}
+
+.attrBtn {
+	padding: 5px 10px;
+	margin-right: 8px;
+	margin-bottom: 10px;
+	border: none;
+	color: white;
+	background-color: #8c8c8c;
+}
+
+.attrBtn:hover {
+	background-color: #40a9ff;
+}
+
+.goods-title {
+	margin: 0;
+	width: 300px;
+	overflow: hidden;
+}
+
+.orderBtn {
+	padding: 10px 15px;
+	background-color: #40a9ff;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
+#guige{
+	display: block;
+	min-height: 100px;
+	width: 94%;
+	margin: auto;
+}
+
+#guige ul{
+	display: inline-block;
+	width: 100%;
+	margin: auto;
+	min-height: 100px;
+	vertical-align: middle;
+	padding: 20px 0;
+}
+#guige ul li{
+	line-height: 28px;;
+	font-size: 16px;
+	width: 30%;
+	display: block;
+	float: left;
+	padding: 8px 10px;
+	
+}

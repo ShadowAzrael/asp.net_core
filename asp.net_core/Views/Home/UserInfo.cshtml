@@ -1,0 +1,294 @@
+﻿@using MVC_Demo.Models.Database;
+@using MVC_Demo.Models;
+@{
+    Layout = null;
+    var user = ViewData["User"] as User;
+    //购物车对象的列表 他的类型对应不上
+    var carcood = ViewData["CarGood"] as List<CarGood>;
+}
+
+
+<!DOCTYPE html
+          PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- InstanceBegin template="/Templates/top-nav.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>导航</title>
+    <link rel="stylesheet" type="text/css" href="/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="/css/home-nav.css" />
+    <!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="head" -->
+    <!-- InstanceEndEditable -->
+</head>
+
+<body onload="initMetaTitle()">
+    <div id="main">
+        <div class="header-nav nav-bg">
+            <div class="top">
+                <div class="xgs-col6">
+                    <span class="">
+                        <img src="img/icon/location.png" height="18" width="18"
+                             style="margin-top: 8px; float: left; display: inline-block; margin-top: 3px;" />&nbsp;&nbsp;广东
+                        广州
+                    </span>
+                </div>
+                <div class="xgs-col6">
+                    <span class="xgs-offset5" style="display: inline-flex;">
+                        <a href="userinfo.html">
+                            <img src="@user.Photo"
+                                 style="border-radius: 15%; width: 24px; height: 24px; line-height: 28px; float: left; margin-top: 2px" />&nbsp;&nbsp;
+                            <span style="line-height: 27px"> @user.UserName &nbsp; |&nbsp;</span>
+                        </a>
+                        <span><a href="userinfo.html">购物车 </a> &nbsp; |&nbsp;</span>
+                        <span onclick="ideaForm()"><a href="javascript:void(0);">问题反馈 </a> &nbsp; |&nbsp;</span>
+                        <span><a href="about.html">关于我们 </a> </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- InstanceBeginEditable name="MainBody" -->
+            <br />
+            <br />
+            <br />
+            <link rel="stylesheet" type="text/css" href="/css/userinfo.css" />
+            <div class="xgs-row">
+
+                <div class="xgs-col3" style="height: 300px;">
+                    <ul class="navtab">
+                        <li>
+                            <a href="index.html">
+                                返回首页
+                            </a>
+                        </li>
+                        <li>
+                            <a style="background-color: #69c0ff;color: white;" href="javascript:void(0);"
+                               onclick="jumpTab('myinfo',this)">我的信息</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="jumpTab('cart',this)">
+                                购物车
+                                <span style="border-radius: 50%;background-color: #ff4d4f;width: 12px;display: block;"></span>
+                            </a>
+                        </li>
+                        <li><a href="javascript:void(0);" onclick="jumpTab('updatePassword',this)">修改密码</a></li>
+                        <li><a href="/home/loginout">退出登录</a></li>
+                    </ul>
+                </div>
+
+                <div class="xgs-col8  white-panel" style="padding: 0 15px;">
+                    <!-- 我的信息 -->
+                    <div class="myinfo" id="myinfo" style="padding: 25px 0 20px;">
+                        <div class="top content" style="border-bottom: 1px solid #d9d9d9;height: 120px;">
+                            <img src="@user.Photo" class="white-panel float-left" style="width:100px;border-radius: 50%;border: #f5f5f5 1px solid;" />
+                            <div style="width: 75%;display: inline-block;margin-top: 35px;padding-left: 30px;line-height: 28px;">
+                                <h3>@user.UserName</h3>
+                                <small>@user.Desc</small>
+                            </div>
+                        </div>
+                        <br />
+                        <!-- 消息列表 -->
+                        <div class="bottom">
+                            <ul class="notice-list">
+                                <!-- <h3>消息列表</h3> -->
+                                <li>
+                                    <h4>系统消息</h4>
+                                    <span>您关注的《女装橱柜》上新啦，快来围观~</span>
+                                </li>
+                                <li>
+                                    <h4>登录通知</h4>
+                                    <span>登录IP地址改变，请核实是否本人登录，如有异常，请联系客服处理！</span>
+                                </li>
+                                <li>
+                                    <h4>交易消息</h4>
+                                    <span>您的订单已打印，请及时处理！</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- /消息列表 -->
+                        <!-- /我的信息 -->
+                    </div>
+
+
+
+
+                    <!-- 购物车 -->
+                    <div class="cart content" id="cart" style="display: none;">
+                        @*<div class="xgs-row">
+                                <div class="xgs-col2 pic">
+                                    <img src="img/detail-img/phone-market/100015195341.webp" />
+                                </div>
+                                <div class="xgs-col10 cart-item">
+                                    <h4> Redmi Note 11 5G 天玑810 33W Pro快充 5000mAh大电池 6GB +128GB 浅梦星河 智能手机 小米 红米</h4>
+                                    <span class="price">价格：￥1988</span>
+                                    <div class="operation">
+                                        <a href="#" id="add">
+                                            <img src="img/icon/cart-add.png" />
+                                        </a>
+                                        <span class="quantity">1</span>
+                                        <a href="#">
+                                            <img src="img/icon/cart-remve.png" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        @*获取用户购物车并输出列表*@
+                        @{
+                            foreach (var item in carcood)
+                            {
+                                <div class="xgs-row">
+                                    <div class="xgs-col2 pic">
+                                        <img src="@item.Cover" />
+                                    </div>
+                                    <div class="xgs-col10 cart-item">
+                                        <h4> @item.GoodName</h4>
+                                        <span class="price">价格：￥@item.Price</span>
+                                        <div class="operation">
+                                            <a href="#" class="add" id="add" onclick="CarChanges(@item.GoodId,@item.Count, '+')">
+                                                <img src="img/icon/cart-add.png" />
+                                            </a>
+                                            <span class="quantity">@item.Count</span>
+                                            <a href="#" class="cut"  onclick="CarChanges(@item.GoodId,@item.Count,'-')">
+                                                <img src="img/icon/cart-remve.png" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                        <div class="cart-btn">
+                            <button type="button" class="cart-submit">立即下单</button>
+                        </div>
+                    </div>
+                    <!-- /购物车 -->
+                    <!-- 修改密码 -->
+                    <div class="updatePassword" id="updatePassword" style="display: none;">
+                        <br />
+                        <br />
+                        <br />
+                        <form action="#" method="post" class="form">
+                            <div class="form-item">
+                                <span>旧密码：</span><input type="text" name="" id="password_old" value="" />
+                            </div>
+                            <div class="form-item">
+                                <span>新密码：</span><input type="password" name="password" id="password_new" />
+                            </div>
+                            <div class="form-item">
+                                <span>
+                                    确认密码：
+                                </span> <input type="password" name="password2" id="password_yes" />
+                            </div>
+                            <div class="btn-goup">
+                                <button style="cursor: pointer" type="button" class="submit-btn" id="submit">提交</button>
+                                <button style="cursor: pointer" type="reset" class="submit-btn" id="reset">重置</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /修改密码 -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="foot-body" style="margin: auto;width: 61%;">
+            <ul>
+                <li><a href="about.html">常见问题</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li>客服QQ：1919399938</li>
+                <li>客服微信：xgs39938</li>
+            </ul>
+            <p style="color: white;clear: left;text-align: center;">
+                Copyright © 2012-2021 Tencent. All Rights Reserved.
+            </p>
+        </div>
+    </div>
+    <script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+    <!-- 意见反馈 -->
+    <div class="question white-panel"
+         style="position: absolute;top: 300px;left: 30%;z-index:1; width: 500px;display:none;" id="question">
+        <div id="" style="display: block;position: absolute;right: 10px;top:10px" onclick="ideaFormClose()">
+            <img src="img/icon/iconmonstr-x-mark-7-240.png" width="24" height="24" />
+        </div>
+
+        <h3 style="text-align: center;line-height: 32px;margin: 20px 0;">意见反馈</h3>
+        <form action="#" method="post" class="form">
+            <div class="form-item">
+                <span>姓名：</span><input type="text" name="" id="" value="" />
+            </div>
+            <div class="form-item">
+                <span>联系方式：</span><input type="text" name="" id="" value="" />
+            </div>
+            <div class="form-item">
+                <span>问题：</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <textarea rows="10" cols="27"></textarea>
+            </div>
+
+            <div class="btn-goup" style="display: block;">
+                <button type="button" class="submit-btn">提交</button>
+                <button type="reset" class="submit-btn">重置</button>
+            </div>
+        </form>
+    </div>
+    <!-- 、意见反馈 -->
+    <script src="~/js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script>
+        //初始化界面
+        window.onload = function () {
+            //jumpTab("cart"); //转跳到购物车
+        };
+
+        //提交按钮
+        $("#submit").click(function () {
+            @*alert("ok");*@
+            var password_old = $("#password_old").val(), password_new = $("#password_new").val(), password_yes = $("#password_yes").val();
+            if (password_new != password_yes) {
+                alert("请重新确认密码！");
+                return false;
+            } else if (password_old == password_new) {
+                alert("新旧密码不能重复！");
+                return false;
+            }
+            //var username = String("@user.UserName"); //中文名报错处理办法
+            $.post('/home/Changepassword',
+                { username: "@user.UserName", password: password_old, password_new: password_new },
+                data => {
+                    alert(data);
+                });
+        });
+        //重置按钮
+        $("#reset").click(function () {
+            $("#password_old").val() = "";
+            $("#password_new").val() = "";
+            $("#password_yes").val() = "";
+        });
+        //购物车增减数量
+        function CarChanges(goodid,count, action) {
+            $.post('/home/CarChanges', { GoodId: goodid, UserId:@user.UserId, Count: count, action: action },
+                data => {
+                    if (data == "修改成功") {
+                        //location.reload();//刷新界面
+                    }
+                });
+        };
+        $(".add").on("click", function () {
+            var foo = $(this).parent().children().eq(1);
+            foo.text(Number(foo.text()) + 1);
+        });
+        $(".cut").on("click", function () {
+            var foo = $(this).parent().children().eq(1);
+            if (foo.text() != "1") foo.text(Number(foo.text()) - 1);
+            else $(this).parent().parent().parent().remove();
+        });
+    </script>
+</body>
+<!-- InstanceEnd -->
+
+</html>

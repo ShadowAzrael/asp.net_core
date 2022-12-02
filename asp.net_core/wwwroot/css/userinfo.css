@@ -1,0 +1,85 @@
+.navtab a {
+	color: #8c8c8c;
+	font-weight: 700;
+}
+
+.navtab a:hover {
+	color: #69c0ff;
+}
+
+.notice-list li {
+	height: 80px;
+	border-bottom: 1px solid #d9d9d9;
+	vertical-align: bottom;
+	text-align: justify;
+}
+
+.notice-list li h4 {
+	line-height: 42px;
+}
+
+.notice-list li span {
+	color: #8c8c8c;
+}
+
+.cart {
+	position: relative;
+	display: block;
+	padding: 10px 0 80px;
+}
+
+.cart .pic img {
+	width: 100%;
+}
+
+
+.cart>.xgs-row {
+	position: relative;
+	border-bottom: 1px solid #bfbfbf;
+	padding-top: 10px;
+}
+
+
+.cart h4 {
+	padding-top: 15px;
+	text-align: justify;
+	overflow: hidden;
+	word-wrap: initial;
+}
+
+.cart .price {
+	color: red;
+	line-height: 32px;
+
+}
+
+.cart .operation {
+	position: absolute;
+	display: inline-flex;
+	right: 0px;
+	top: 90px;
+}
+
+.cart .operation img {
+	width: 24px;
+}
+
+.cart .quantity {
+	line-height: 24px;
+	margin: 0 10px;
+}
+
+.cart .cart-submit {
+	padding: 8px 30px;
+	text-align: center;
+	margin: 0 5px;
+	background-color: #69c0ff;
+	position: absolute;
+	right: 0;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 14px;
+	bottom: 10px;
+}
+

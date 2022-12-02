@@ -1,0 +1,42 @@
+
+
+.goods-item  .xgs-row {
+	background-color: white;
+	padding: 25px 0;
+}
+
+.goods-item>div{
+	
+	/* box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%); */
+}
+
+.goods-item .xgs-row>div {
+	height: 170px margin: auto;
+	position: relative;
+} 
+
+.goods-item .xgs-row img {
+	width: 70%;
+	display: block;
+	vertical-align: middle;
+	margin: auto;
+}
+
+
+
+.goods-item .price {
+	font-size: 18px;
+	color: red;
+	width: 160px;
+	margin: auto;
+	font-weight: 700;
+	line-height: 36px;
+}
+.goods-title {
+	margin: auto;
+	width: 160px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

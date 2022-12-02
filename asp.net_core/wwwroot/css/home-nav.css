@@ -1,0 +1,50 @@
+.nav-bg {
+	background-color: #1f1f1f;
+	color: white;
+}
+
+.main {
+	min-width: 1920px;
+	width: 1920px;
+}
+
+.header-nav {
+	height: 28px;
+	line-height: 28px;
+	font-size: 12px;
+}
+
+.header-nav .top {
+	width: 900px;
+	margin: auto;
+}
+
+.header-nav a {
+	color: white;
+	text-decoration: none;
+}
+
+.header-nav a:hover {
+	color: #69c0ff;
+}
+
+.header-body {
+	clear：left;
+}
+.header-top .header-body li{
+	text-align: right;
+}
+.header-top .header-body li a {
+	padding: 0 25px;
+	line-height: 80px;
+	font-size: 16px;
+	color: #1F1F1F;
+
+}
+
+
+
+.footer {
+	min-height: 150px;
+	background-color: #1F1F1F;
+}

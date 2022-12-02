@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <style>
+        .formBody {
+            clear: left;
+            vertical-align: middle;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+            .formBody .input-text {
+                height: 30px;
+                width: 300px;
+                margin-bottom: 20px;
+            }
+
+            .formBody div {
+                text-align: center;
+            }
+
+            .formBody h1 {
+                text-align: center;
+                margin: 50px 0;
+            }
+
+            .formBody .input-button {
+                width: 100px;
+                height: 50px;
+                font-size: 26px;
+            }
+    </style>
+    <div class="container">
+        <form action="" class="formBody" method="post">
+            <h1>注册账号</h1>
+            <div>
+                账号：<input class="input-text" type="text" id="username" />
+            </div>
+            <div>
+                密码：<input class="input-text" type="text" id="password" />
+            </div>
+            <div>
+                <input class="input-button" type="button" value="提交" id="submit" />
+            </div>
+        </form>
+    </div>
+    @section script
+{
+        <script src="~/js/jquery-3.6.0.min.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+        $(function() {
+            $("#submit").on("click",
+                function() {
+                    var username = $("#username").val();
+                    var password = $("#password").val();
+
+                    $.post('/home/RegisterAccount', { username: username,password:password }, function(data,success) {
+                        alert(data);
+                        console.log('服务器返回结果：' + data );
+                        if (data == "注册成功") {
+                            window.location.href="login.html"
+                        }
+                    });
+                });
+        })
+        </script>
+    }
+}

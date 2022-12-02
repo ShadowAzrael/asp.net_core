@@ -1,0 +1,99 @@
+.container .left-sidebar {
+	position: relative;
+}
+
+.container .left-sidebar ul {
+	margin: auto;
+	width: 90%;
+}
+
+.container .left-sidebar li {
+	font-weight: 500;
+	line-height: 43px;
+	border-bottom: solid 1px #d9d9d9;
+	color: #8c8c8c;
+}
+
+.left-sidebar li {
+	cursor: pointer;
+}
+
+.left-sidebar .sidebar-panel {
+	padding: 25px 40px;
+	background-color: white;
+	position: absolute;
+	min-width: 100px;
+	min-height: 100px;
+	top: 0;
+	left: 257px;
+	border: 5px solid #69c0ff;
+	border-radius: 0px 15px 15px 0;
+}
+
+.sidebar-panel a {
+	display: inline-block;
+	float: left;
+	min-width: 20px;
+	padding: 10px 20px;
+}
+
+.hot-goods {
+	background-color: white;
+	text-align: center;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.hot-goods .xgs-col4 {
+	padding-top: 20px;
+}
+
+.hot-goods .xgs-col4 span {
+	margin: auto;
+	width: 180px;
+	color: #595959;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.clothing-item span {
+	color: #595959;
+	margin: auto;
+	width: 160px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.clothing-item img {
+	display: block;
+	margin: auto;
+}
+
+.clothing-item {
+	height: 180px;
+	vertical-align: middle;
+	display: block;
+	padding-top: 20px;
+}
+
+.container .hot-goods .countdown {
+	height: 210px;
+	background-color: #69c0ff;
+	text-align: center;
+	color: white;
+}
+
+.hot-goods .countdown h2,
+.hot-goods .countdown img {
+	margin: 10px auto;
+	color: white;
+}
+
+h2 {
+	color: #8c8c8c;
+}

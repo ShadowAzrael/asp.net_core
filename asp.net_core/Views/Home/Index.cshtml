@@ -1,0 +1,463 @@
+﻿@section css{
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+}
+@section script{
+    <!-- 导航面板的动态操作 -->
+    <script type="text/javascript">
+        var leavepanel = false;
+
+        function showPanel(domName) {
+            var nowDom = document.getElementById(domName);
+            nowDom.parentNode.style.display = "block";
+
+            var nodes = nowDom.parentNode.childNodes;
+            var len = nodes.length;
+            for (var i = 0; i < len; i++) {
+                var node = nodes[i];
+                // console.log(node.tagName)
+                if (node.tagName === "DIV") {
+                    if (node.getAttribute("id") === domName) {
+                        node.style.display = "block";
+                    } else {
+                        node.style.display = "none";
+                    }
+                }
+            }
+        }
+
+        // 确保鼠标离开面板再隐藏
+        function hiddenPanel(domName) {
+            if (domName === "all") {
+                document.getElementById("sidebar-panel").style.display = "none"
+                // document.getElementById("phone-panel").style.display="none"
+                // document.getElementById("toiletris-panel").style.display="none"
+                // document.getElementById("household-panel").style.display="none"
+                // document.getElementById("food-panel").style.display="none"
+                // document.getElementById("book-panel").style.display="none"
+
+            } else {
+                if (leavepanel) {
+                    setTimeout(function () {
+                        if (leavepanel) {
+                            var d = document.getElementById(domName);
+                            d.parentNode.style.display = "none";
+                            document.getElementById(domName).style.display = "none";
+                        }
+                    },
+                        1000); // 两秒后判断是否需要隐藏这个面板
+                }
+            }
+        }
+
+
+        function mouseThis(dom) {
+            // console.log("moveThis");
+            leavepanel = false;
+        }
+
+        function leaveThis(dom) {
+            // console.log("leaveThis");
+            leavepanel = true;
+        }
+    </script>
+}
+
+@*内容*@
+<div class="container">
+    <!-- InstanceBeginEditable name="MainBody" -->
+    <div class="xgs-row white-panel" onmouseleave="hiddenPanel('all');">
+        <div class="left-sidebar xgs-col3">
+            <ul>
+                <li onmouseover="showPanel('clothing-panel')" onmouseleave="hiddenPanel('clothing-panel')">
+                    <span>
+                        男装&nbsp;&nbsp;|&nbsp;&nbsp;女装&nbsp;&nbsp;|&nbsp;&nbsp;男鞋&nbsp;&nbsp;|&nbsp;&nbsp;女鞋
+                    </span>
+                </li>
+                <li onmouseover="showPanel('phone-panel')" onmouseleave="hiddenPanel('phone-panel')">
+                    <span>
+                        手机&nbsp;&nbsp;|&nbsp;&nbsp;数码
+                    </span>
+                </li>
+                <li onmouseover="showPanel('toiletris-panel')" onmouseleave="hiddenPanel('toiletris-panel')">
+                    <span>
+                        美妆&nbsp;&nbsp;|&nbsp;&nbsp;彩妆&nbsp;&nbsp;|&nbsp;&nbsp;个护
+                    </span>
+                </li>
+                <li onmouseover="showPanel('household-panel')" onmouseleave="hiddenPanel('household-panel')">
+                    <span>
+                        大家电&nbsp;&nbsp;|&nbsp;&nbsp;生活电器
+                    </span>
+                </li>
+                <li onmouseover="showPanel('food-panel')" onmouseleave="hiddenPanel('food-panel')">
+                    <span>
+                        零食&nbsp;&nbsp;|&nbsp;&nbsp;生鲜&nbsp;&nbsp;|&nbsp;&nbsp;茶酒
+                    </span>
+                </li>
+                <li onmouseover="showPanel('book-panel')" onmouseleave="hiddenPanel('book-panel')">
+                    <span>
+                        图书音像&nbsp;&nbsp;|&nbsp;&nbsp;文具
+                    </span>
+                </li>
+                <!-- <li><span>手表&nbsp;&nbsp;|&nbsp;&nbsp;眼镜&nbsp;&nbsp;|&nbsp;&nbsp;珠宝饰品</span></li>
+                <li><span>运动户外</span></li> -->
+            </ul>
+            <div class="sidebar-panel white-panel" id="sidebar-panel" onmousemove="mouseThis(this)"
+                 onmouseleave="leaveThis(this)">
+                <div class="clothing-panel" id="clothing-panel">
+                    <a href="./clothing-market.html">
+                        男装
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./clothing-market.html">
+                        女装
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./clothing-market.html">
+                        男鞋
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./clothing-market.html">
+                        女鞋
+                    </a>
+                </div>
+                <div class="phone-panel" id="phone-panel" style="display: none">
+                    <a href="./phone-market.html">
+                        手机
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./phone-market.html">
+                        数码
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                </div>
+                <div class="toiletris-panel" id="toiletris-panel" style="display: none">
+                    <a href="./toiletris-market.html">
+                        美妆
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./toiletris-market.html">
+                        彩妆
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./toiletris-market.html">
+                        个护
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                </div>
+                <div class="household-panel" id="household-panel" style="display: none">
+                    <a href="./household-market.html">
+                        大家电
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./household-market.html">
+                        生活电器
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                </div>
+                <div class="food-panel" id="food-panel" style="display: none">
+                    <a href="./food-market.html">
+                        零食
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./food-market.html">
+                        生鲜
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./food-market.html">
+                        茶酒
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                </div>
+                <div class="book-panel" id="book-panel" style="display: none">
+                    <a href="./market.html">
+                        图书音像
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <a href="./market.html">
+                        文具
+                    </a>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                </div>
+                <!-- <div class="clothing-panel">
+                <a href="./clothing-market.html">手表</a>&nbsp;&nbsp; &nbsp;&nbsp;
+                <a href="./clothing-market.html">眼镜</a>&nbsp;&nbsp; &nbsp;&nbsp;
+                <a href="./clothing-market.html">珠宝饰品</a>&nbsp;&nbsp; &nbsp;&nbsp;
+                </div>
+                <div class="out">
+                <a href="">运动户外</a>
+                </div> -->
+            </div>
+        </div>
+        <div class="xgs-col9">
+            <img src="img/home/banner1.jpg" width="100%" />
+        </div>
+    </div>
+    <!-- 精品秒杀 -->
+    <div class="hot-goods xgs-row">
+        <div class="xgs-col3 countdown">
+            <h2>
+                精品秒杀
+            </h2>
+            <p>
+                <img src="img/home/lightning.png" width="50" height="60" />
+            </p>
+            <p>
+                <small>
+                    结束倒计时
+                </small>
+            </p>
+            <h2>
+                12:23:15
+            </h2>
+        </div>
+        <div class="xgs-col4" style="height: 180px">
+            <a href="javascript:void(0);" onclick="jump(123456)">
+                <img src="img/home/hot1.jpg" height="140" align="center" />
+                <br />
+                <span style="text-align: center">
+                    MLB 男女通用 棒球帽
+                </span>
+            </a>
+        </div>
+        <div class="xgs-col4">
+            <a href="javascript:void(0);" onclick="jump('100016799350')">
+                <img src="img/home/hot2.jpg" height="140" align="center" />
+                <br />
+                <span style="text-align: center">
+                    Redmi Note 9 Pro 5G 一亿像素 骁龙750G 33W快充 120Hz刷新率 碧海星辰 8GB+256GB 智能手机 小米
+                    红米
+                </span>
+            </a>
+        </div>
+        <div class="xgs-col4">
+            <a href="javascript:void(0);" onclick="jump('10038987213129')">
+                <img src="img/home/hot3.jpg" height="140" align="center" />
+                <br />
+                <span style="text-align: center">
+                    摩斯维 苹果12手机壳iphone12保护套磨砂透明软壳镜头全包防摔超薄男款潮女款个性时尚简约高级感 石墨黑【超薄磨砂丨强抗指纹】贈钢化膜
+                </span>
+            </a>
+        </div>
+        <div class="xgs-col4">
+            <a href="javascript:void(0);" onclick="jump('100026484792')">
+                <img src="img/home/hot4.jpg" height="140" align="center" />
+                <br />
+                <span style="text-align: center">
+                    虎牌保险柜 家用小型60cm全钢防盗入墙保管柜指纹密码办公保险箱 博瑞系列 钢琴黑
+                </span>
+            </a>
+        </div>
+    </div>
+    <!-- /精品秒杀 -->
+    <!-- 主题市场 -->
+    <div class="market">
+        <h2 class="little-title">
+            主题市场
+        </h2>
+        <div class="xgs-row">
+            <div class="xgs-col4" style="text-align: center;cursor: pointer;" onclick="navEven('page/clothing-market.html')">
+                <img src="img/home/girl-clothing.jpg" height="272" width="242" align="center" />
+            </div>
+            <div class="xgs-col4" style="text-align: center;cursor: pointer;" onclick="navEven('page/household-market.html')">
+                <img src="img/home/jd.jpg" height="272" width="242" align="center" />
+            </div>
+            <div class="xgs-col8 white-panel" style="text-align: center">
+                <div class="xgs-row">
+                    <div class="xgs-col6">
+                        <a href="food-market.html">
+                            <h3>
+                                生鲜馆
+                            </h3>
+                            <img src="img/home/shengxiang1.jpg" />
+                        </a>
+                    </div>
+                    <div class="xgs-col6">
+                        <a href="phone-market.html">
+                            <h3>
+                                智能数码
+                            </h3>
+                            <img src="img/home/zhinengshuma.jpg" />
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="xgs-row">
+                    <div class="xgs-col6">
+                        <a href="food-market.html">
+                            <h3>
+                                网红零食
+                            </h3>
+                            <img src="img/home/milk.jpg" />
+                        </a>
+                    </div>
+                    <div class="xgs-col6">
+                        <a href="market.html">
+                            <h3>
+                                考研必备
+                            </h3>
+                            <img src="img/home/6158af3b9b9fe2cf.jpg" width="90" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /主题市场 -->
+    <!-- 美丽衣橱 -->
+    <div class="clothing">
+        <h2 class="little-title">
+            美丽衣橱
+        </h2>
+        <div class="white-panel" style="padding-bottom: 15px; min-height: 300px">
+            <div class="xgs-row" style="clear: left">
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump(100023589788)">
+                            <img src="img/home/clothing/a1.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                A21秋季2021男装梭织起绒合体翻领长袖全开襟简约经典情侣款格子衬衫男女上衣R413110035 紫色 170/84A/M
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('100011564489')">
+                            <img src="img/home/clothing/a2.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                梵迪拉泳衣女夏2021年新款遮肚显瘦时尚游泳衣泡温泉连体泳装可拆卸裙 12128 黑色 XL（110-125斤）
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('100004049488')">
+                            <img src="img/home/clothing/a3.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                U.S.POLO ASSN.拉链领带男5.5商务休闲正装一拉得懒人免打结男士西装领带学生礼盒装 SLDOO-60006 藏蓝
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('100008024623')">
+                            <img src="img/home/clothing/a4.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                宜肤泳衣女保守显瘦女士学生运动游泳衣女款3件套平角大码专业温泉泳装 黑灰 L
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('100010453554')">
+                            <img src="img/home/clothing/a5.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                Keep 高强度工字背运动内衣背心健身跑步聚拢文胸10406 黑色 L
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="xgs-row" style="clear: left">
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('10034860977663')">
+                            <img src="img/home/clothing/a6.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                Cabbeen/卡宾男装半高领长袖线衫2021落肩休闲织唛立体针织H 国美蓝27 48/170/M
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('100019794126')">
+                            <img src="img/home/clothing/a7.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                初申 2021秋季格子长袖衬衫女学生韩版宽松衬衣休闲上衣薄外套 SW13CS382 蓝色 均码
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('100003183087')">
+                            <img src="img/home/clothing/a8.png" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                Speedo/速比涛 女士泳衣 绮遇系列 深海设计连体泳衣 海岛 度假泳衣女抗氯 修身 8122065332 海蓝/白色 34
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('10024675662978')">
+                            <img src="img/home/clothing/a9.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                Siggi SI91472 100%纯羊毛围巾女冬季韩版加厚保暖披肩日系百搭休闲字母围脖 浅摩卡/月光白 200*50CM 礼袋装
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="xgs-col4">
+                    <div class="clothing-item">
+                        <a href="#" onclick="jump('100007605202')">
+                            <img src="img/home/clothing/a10.jpg" height="140" align="center" />
+                            <br />
+                            <span style="text-align: center">
+                                木九十 钛材质半框镜架 时尚简约佩戴舒适 沉稳优雅男镜FM1920205 C02 光浅金
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /美丽衣橱 -->
+    <!-- 服务保障 -->
+    <div class="service">
+        <h2 class="little-title">
+            服务保障
+        </h2>
+        <div class="xgs-row white-panel" style="line-height: 100px; text-align: center; color: #8c8c8c">
+            <div class="xgs-col4">
+                <h2>
+                    <img src="img/card.png" height="32px" style="vertical-align: middle" />
+                    免费配送
+                </h2>
+            </div>
+            <div class="xgs-col4">
+                <h2>
+                    <img src="img/home/shield.png" height="32px" style="vertical-align: middle" />
+                    售后保障
+                </h2>
+            </div>
+            <div class="xgs-col4">
+                <h2>
+                    <img src="img/home/server.png" height="32px" style="vertical-align: middle" />
+                    专属客服
+                </h2>
+            </div>
+            <div class="xgs-col4">
+                <h2>
+                    <img src="img/home/yes.png" height="32px" style="vertical-align: middle" />
+                    七天无理由
+                </h2>
+            </div>
+        </div>
+    </div>
+    <!-- /服务保障 -->
+    <!-- InstanceEndEditable -->
+</div>

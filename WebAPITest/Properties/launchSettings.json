@@ -1,0 +1,50 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:57578",
+      "sslPort": 44386
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "WebAPITest": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "JWTConfig": {
+    "Secret": "abcdefghijklmnop",
+    "Issuer": "666.com",
+    "Audience": "WebApi",
+    "AccessExpiration": 30,
+    "RefreshExpiration": 60
+  },
+  "Redis": {
+    "Default": {
+      "Connection": "127.0.0.1:6379",
+      "InstanceName": "local",
+      "DefaultDB": 0,
+      "Password": "12345"
+    }
+  }
+}
